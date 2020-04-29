@@ -2,7 +2,9 @@ package top.rregio.CalculaNotasUnivesp;
 
 /**
  * Algorítmo para calcular a nota de prova Criado em C# por Fernando e
- * convertido em Java por Rodrigo Régio de Araújo
+ * convertido em Java por Rodrigo Régio de Araújo.
+ * 
+ * Algorítmo tirado em https://dotnetfiddle.net/fyzySP
  * 
  * @author Fernando 
  * @version 1.0.0
