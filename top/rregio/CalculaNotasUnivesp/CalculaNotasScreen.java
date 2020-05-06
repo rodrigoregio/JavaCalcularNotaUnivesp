@@ -66,13 +66,14 @@ public class CalculaNotasScreen extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
         //se a fonte do evento vier do botão calcular
         if(e.getSource() == btnCalcular){
+            ValidaCampos vc = new ValidaCampos();
             //cria um array de 4 elementos
             double notas[] = new double[4];
             //pega o que foi digitado nos textfields e armazena nos indices do vetor
-            notas[0] = Double.parseDouble(tNota1.getText());
-            notas[1] = Double.parseDouble(tNota2.getText());
-            notas[2] = Double.parseDouble(tNota3.getText());
-            notas[3] = Double.parseDouble(tNota4.getText());
+            notas[0] = vc.alteraVirgula(tNota1.getText());
+            notas[1] = vc.alteraVirgula(tNota2.getText());
+            notas[2] = vc.alteraVirgula(tNota3.getText());
+            notas[3] = vc.alteraVirgula(tNota4.getText());
             
             double mediaAtividades = NotaDeProva.calculaMediaAtividades(notas);
             tResultado.setText("Nota Semana 1: "+notas[0]+
