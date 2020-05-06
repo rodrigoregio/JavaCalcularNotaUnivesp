@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import top.rregio.CalculaNotasUnivesp.NotaDeProva;
 /**
- * Esta é a tela da calculadora de notas
+ * Tela Calculadora de notas, é a GUI (Graphical User Interface) do projeto
  * 
  * @author Rodrigo Régio de Araújo
  * @version 1.0.0
@@ -34,6 +34,7 @@ public class CalculaNotasScreen extends JFrame implements ActionListener{
         //método para montar a tela        
         this.montaTela();
     }
+    
     public void montaTela(){
         //Setando o tamanho dos componentes
         lNota1.setBounds(10,10,100,25);
@@ -62,29 +63,31 @@ public class CalculaNotasScreen extends JFrame implements ActionListener{
         getContentPane().add(btnCalcular);
         getContentPane().add(tResultado);
     }
+    //evento do click no botão
     @Override
     public void actionPerformed(ActionEvent e){
         //se a fonte do evento vier do botão calcular
         if(e.getSource() == btnCalcular){
-            ValidaCampos vc = new ValidaCampos();
             //cria um array de 4 elementos
             double notas[] = new double[4];
             //pega o que foi digitado nos textfields e armazena nos indices do vetor
-            notas[0] = vc.alteraVirgula(tNota1.getText());
-            notas[1] = vc.alteraVirgula(tNota2.getText());
-            notas[2] = vc.alteraVirgula(tNota3.getText());
-            notas[3] = vc.alteraVirgula(tNota4.getText());
-            
+            notas[0] = ValidaCampos.transformaTexto(tNota1.getText());
+            notas[1] = ValidaCampos.transformaTexto(tNota2.getText());
+            notas[2] = ValidaCampos.transformaTexto(tNota3.getText());
+            notas[3] = ValidaCampos.transformaTexto(tNota4.getText());
+
             double mediaAtividades = NotaDeProva.calculaMediaAtividades(notas);
-            tResultado.setText("Nota Semana 1: "+notas[0]+
-                               "\nNota Semana 2: "+notas[1]+
-                               "\nNota Semana 3: "+notas[2]+
-                               "\nNota Semana 4: "+notas[3]+
-                               "\n\nMedia de notas semanas: "+mediaAtividades+
-                               "\n\nVocê precisa de "+NotaDeProva.mediaFinal(mediaAtividades)+" pontos na prova!");
+            tResultado.setText("Nota Semana 3: "+notas[0]+
+                               "\nNota Semana 4: "+notas[1]+
+                               "\nNota Semana 5: "+notas[2]+
+                               "\nNota Semana 6: "+notas[3]+
+                               "\n\nMedia de notas semanas: "+ValidaCampos.soDuasCasas(mediaAtividades)+
+                               "\n\nVocê precisa de "+ValidaCampos.soDuasCasas(NotaDeProva.mediaFinal(mediaAtividades))+" pontos "+
+                               "na prova!");
             
         }
     }
+    
     public static void main(String[] args){
         CalculaNotasScreen calcula = new CalculaNotasScreen();
         calcula.setSize(600,600);
