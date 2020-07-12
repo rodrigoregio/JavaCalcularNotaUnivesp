@@ -1,5 +1,5 @@
 package top.rregio.CalculaNotasUnivesp;
-
+//import top.rregio.ValidaCampos;
 /**
  * Algorítmo para calcular a nota de prova Criado em C# por Fernando Rafael e
  * convertido em Java por Rodrigo Régio de Araújo.
@@ -53,9 +53,18 @@ public class NotaDeProva
                 break;
             }
             //se não for maior ou igual 4.8 os pontos recebem os pontos +0.1 (um decimo de nota, para maior precisão do sistema)
-            pontos = pontos+0.1;
+            pontos = pontos+0.01;
         }
         return pontos;
+    }
+    public static String notaFinal(double mediaAtividades, double pontosProva){
+        double media2 = pontosProva*0.6;
+        double notaFinal = mediaAtividades+media2;
+        if(notaFinal >= 4.8){
+            return "Com "+pontosProva+" pontos o aluno está aprovado com a nota "+ValidaCampos.soDuasCasas(notaFinal)+"!";
+        }else{
+            return"Com "+pontosProva+" pontos o aluno está reprovado com a nota "+ValidaCampos.soDuasCasas(notaFinal)+"!";
+        }
     }
 }
 //fim classe

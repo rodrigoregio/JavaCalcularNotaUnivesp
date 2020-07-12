@@ -47,7 +47,7 @@ public class ValidaCampos{
      */
     public static String isVazio(String val){
         if(val.isEmpty()){
-            val = "0.0";
+            val = "0";
         }
         if(!val.matches("[0-9,.]+")){
             val = "0.0";
